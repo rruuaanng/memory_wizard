@@ -1,5 +1,5 @@
-#ifndef _MOON_PROC_MEM_WIZARD_H
-#define _MOON_PROC_MEM_WIZARD_H
+#ifndef _MOON_WIZARD_USER_INTERFACE_H
+#define _MOON_WIZARD_USER_INTERFACE_H
 
 /*==========================
 	ioctl command
@@ -8,4 +8,4 @@
 #define GET_PROC_ID					_IOR('W', 0x0002, pid_t)
 // #define GET_PROCESS				
 
-#endif // _MOON_PROC_MEM_WIZARD_H
+#endif // _MOON_WIZARD_USER_INTERFACE_H
