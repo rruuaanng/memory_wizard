@@ -14,8 +14,12 @@
 global struct
 ============================*/
 struct proc_desc {
-
-};
+	pid_t pid;
+	char *name;
+	__u64 entry_addr;
+	__u64 end_addr;
+	struct proc_desc *parent;
+}target_proc;
 
 /*==========================
 wizard infomation
@@ -48,14 +52,25 @@ int user_release(struct inode *node, struct file *fp)
 }
 
 long user_ioctl_m64(struct file *fp, unsigned int cmd, unsigned long arg) {
-	
+	// check userspace point not null
+	if ((void *)arg == NULL) {
+		return -EFAULT;
+	}
+
+	// select command and execute
 	switch (cmd) {
 	case GET_VERSION:
-		printk(KERN_INFO "ioctl get version success!\n");
+		// user point address
+		char __user *ubuf = (char __user*)arg;
+
+		// copy to user code
+		if(copy_to_user(ubuf,WIZARD_VERSION,sizeof(WIZARD_VERSION))) {
+			pr_err("version info copy to userspace error\n");
+		}
 		break;
 	
 	default:
-		printk(KERN_ERR "ioctl command error\n");
+		pr_err("ioctl command error\n");
 		break;
 	}
 
@@ -63,11 +78,18 @@ long user_ioctl_m64(struct file *fp, unsigned int cmd, unsigned long arg) {
 }
 
 long user_ioctl_m32(struct file *fp, unsigned int cmd, unsigned long arg) {
+	// check userspace point not null
+	if ((void *)arg == NULL) {
+		return -EFAULT;
+	}
 
-
+	// select command and execute
 	switch (cmd) {
 	case GET_VERSION:
+		// user point address
 		char __user *ubuf = (char __user*)arg;
+
+		// copy to user code
 		if(copy_to_user(ubuf,WIZARD_VERSION,sizeof(WIZARD_VERSION))) {
 			pr_err("version info copy to userspace error\n");
 		}
