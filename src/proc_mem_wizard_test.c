@@ -3,7 +3,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
-#include "proc_mem_wizard.h"
+
+#include "include/wizard_user_interface.h"
 
 
 int main() {
