@@ -1,4 +1,4 @@
-obj-m += proc_mem_wizard.o
+obj-m += core.o
 
 KDIR ?= /lib/modules/$(shell uname -r)/build
 
