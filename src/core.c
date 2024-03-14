@@ -8,7 +8,7 @@
 #include <linux/cdev.h>
 #include <linux/string.h>
 
-#include "proc_mem_wizard.h"
+#include "include/wizard_user_interface.h"
 
 /*==========================
 global struct
