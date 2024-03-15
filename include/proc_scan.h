@@ -11,7 +11,7 @@ struct proc_desc {
 	__u64 entry_addr;
 	__u64 end_addr;
 	struct proc_desc *parent;
-}target_proc;
+};
 
 
 #endif // _MOON_PROC_SCAN_H
