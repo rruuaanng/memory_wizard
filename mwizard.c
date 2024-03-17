@@ -35,6 +35,7 @@ ssize_t read_from_user_pg(struct file *fp, char __user *buf,
 {
 	return 0;
 }
+
 ssize_t write_to_user_pg(struct file *fp, const char __user *buf,
 						 size_t, loff_t *)
 {
