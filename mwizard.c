@@ -5,6 +5,7 @@
 #include <linux/kdev_t.h>
 #include <linux/init.h>
 #include <linux/fs.h>
+#include <linux/version.h>
 #include <linux/cdev.h>
 #include <linux/string.h>
 
